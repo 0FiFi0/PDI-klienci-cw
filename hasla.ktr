@@ -484,7 +484,12 @@
     <ini_section_field/>
     <section/>
     <file>
-      <name>C:\Users\Praktykant\Desktop\Zadanie\config.properties</name>
+      <name/>
+      <exclude_filemask/>
+      <filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>${Internal.Entry.Current.Directory}/config.properties</name>
       <exclude_filemask/>
       <filemask/>
       <file_required>N</file_required>

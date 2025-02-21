@@ -544,7 +544,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:/Users/Praktykant/Desktop/Zadanie/klienci.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/klienci.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>

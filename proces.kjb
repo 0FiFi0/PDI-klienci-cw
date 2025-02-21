@@ -316,7 +316,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/Praktykant/Desktop/Zadanie/hasla.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/hasla.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -355,7 +355,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/Praktykant/Desktop/Zadanie/klienci.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/klienci.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
