@@ -513,16 +513,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Group by miasto</from>
-      <to>Table output miasta </to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Group by zakres lat</from>
-      <to>Table output lata</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>CSV file input</from>
       <to>Wiek</to>
       <enabled>Y</enabled>
@@ -530,6 +520,16 @@
     <hop>
       <from>CSV file input</from>
       <to>Sort by miasto</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by miasto</from>
+      <to>Table output miasta </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by zakres lat</from>
+      <to>Table output lata</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -866,7 +866,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>768</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -910,7 +910,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>768</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
