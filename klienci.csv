@@ -1,0 +1,54 @@
+Imie,Nazwisko,Email,Data urodzenia,Ullica,Kod pocztowy,Miasto
+Jan,Kowalski,jankowalski@email.com,2010-05-12,Polna 15,00-001,Warszawa
+Anna,Nowak,annanowak@email.com,2009-08-22,Kwiatowa 22,01-234,Krakow
+Piotr,Zielinski,piotrzielinski@email.com,2008-03-10,Wiosenna 30,02-345,Poznan
+Maria,Wisniewska,mariawisniewska@email.com,2007-11-03,Lesna 5,03-456,Wroclaw
+Kamil,Slusarczyk,kamilslusarczyk@email.com,2006-02-17,Sloneczna 45,04-567,Gdansk
+Monika,Grabowska,monikagrabowska@email.com,2007-06-28,Warszawska 12,05-678,Lodz
+Tomasz,Jakubowski,tomaszjakubowski@email.com,2001-09-25,Cicha 18,06-789,Szczecin
+Katarzyna,Wojcik,katarzynwojcik@email.com,2003-12-15,Strzelecka 8,07-890,Lublin
+Adam,Majewski,adammajewski@email.com,2004-07-30,Morska 19,08-901,Bialystok
+Ewa,Chmielowska,ewachmielowska@email.com,1998-01-06,Jagodowa 3,09-012,Katowice
+Lukasz,Piotrowski,lpiotrowski@email.com,2003-04-04,Sadowa 2,10-123,Torun
+Patrycja,Marciniak,patrycjam@email.com,2002-02-20,Kosciuszki 18,11-234,Zielona Gora
+Wojciech,Wojda,wojciech.wojda@email.com,2000-10-13,Laskotna 7,12-345,Olsztyn
+Zuzanna,Chmiel,zuzannachmiel@email.com,2001-11-25,Piaskowa 8,13-456,Opole
+Michal,Kaczmarek,michalkaczmarek@email.com,2005-05-18,Zielona 16,14-567,Radom
+Beata,Szymanska,beataszymanska@email.com,2002-12-02,Wegierska 4,15-678,Czestochowa
+Lukasz,Borkowski,lukaszborkowski@email.com,2004-09-07,Wrobla 14,16-789,Bydgoszcz
+Julia,Krawczyk,juliakrawczyk@email.com,2003-03-29,Zlota 21,17-890,Gorzow Wielkopolski
+Artur,Nowicki,arturnowicki@email.com,1985-08-14,Lakowa 10,18-901,Wloclawek
+Agnieszka,Stolarz,agnieszkastolarz@email.com,1990-01-30,Stawna 8,19-012,Plock
+Sebastian,Dabrowski,sebastiandabrowski@email.com,1995-12-16,Modrzewiowa 3,20-123,Koszalin
+Kinga,Walczak,kingawalczak@email.com,2002-05-02,Wroclawska 25,21-234,Zielona Gora
+Marek,Kulesza,markekulesza@email.com,1989-07-09,Styczna 15,22-345,Lublin
+Monika,Polak,monikapolak@email.com,2004-04-14,Lechitow 4,23-456,Tarnow
+Rafal,Zawisza,rafalzawisza@email.com,1998-11-08,Sadowa 2,24-567,Szczecin
+Dorota,Borowski,dorotaborowski@email.com,2002-10-25,Strzelecka 13,25-678,Gdansk
+Konrad,Kowalczyk,konradkowalczyk@email.com,1999-03-16,Wrzosowa 9,26-789,Wroclaw
+Katarzyna,Zych,katarzynazych@email.com,2000-07-03,Lakowa 20,27-890,Krakow
+Krystian,Kobielski,krystiankobielski@email.com,2002-09-18,Slowackiego 17,28-901,Torun
+Malgorzata,Gorska,malgorzatagorska@email.com,2005-06-12,Kamienna 6,29-012,Poznan
+Karolina,Sikora,karolinasikora@email.com,2000-01-20,Modrzewiowa 5,30-123,Lodz
+Bartosz,Adamczyk,baroszadamczyk@email.com,2002-11-11,Wroclawska 11,31-234,Gdansk
+Andrzej,Wasilewski,andrzejwasilewski@email.com,1987-02-09,Malwowa 23,32-345,Szczecin
+Marta,Maly,martamaly@email.com,2002-07-15,Msciwoja 1,33-456,Kielce
+Janusz,Sierzant,januszierzant@email.com,1995-05-30,Zalesie 14,34-567,Radom
+Zofia,Rutkowska,zofiarutkowska@email.com,1990-11-06,Dluga 3,35-678,Bialystok
+Adrianna,Nowakowska,adriannnowakowska@email.com,2007-02-12,Zielona 18,36-789,Sosnowiec
+Filip,Kaczmarek,filipkaczmarek@email.com,1995-09-29,Laskowa 9,37-890,Opole
+Olga,Dabrowska,olgadabrowska@email.com,2000-03-07,Zlota 2,38-901,Wroclaw
+Kamil,Borkowski,kamilborkowski@email.com,2002-11-14,Brzozowa 6,39-012,Lublin
+Krzysztof,Chmiel,krzysztofchmiel@email.com,2001-08-10,Sikorskiego 5,40-123,Szczecin
+Wiktoria,Kowalska,wiktoriakowalska@email.com,2004-06-22,Modrzewie 8,41-234,Zielona Gora
+Maja,Tomczak,majatomczak@email.com,2003-01-03,Lechitow 4,42-345,Gdansk
+Emilia,Nowak,emilianowak@email.com,2007-04-26,Kwiatowa 5,43-456,Poznan
+Hubert,Walczak,hubertwalczak@email.com,2006-12-14,Nowa 15,44-567,Tarnow
+Karol,Zawisza,karolzawisza@email.com,2002-10-10,Debowa 23,45-678,Lodz
+Kinga,Stolarz,kingastolarz@email.com,2003-09-05,Sadowa 12,46-789,Szczecin
+Piotr,Rutkowski,piotrutkowski@email.com,1985-03-22,Kamienna 20,47-890,Radom
+Alicja,Nowakowska,alicjanowakowska@email.com,1990-07-18,Kwiatowa 3,48-901,Bydgoszcz
+Pawel,Siwek,pawelsiwek@email.com,1996-02-28,Zlota 4,49-012,Krakow
+Adam,Stefanowski,adamstefanowski@email.com,1975-01-10,Chmielna 11,50-123,Gdynia
+Barbara,Kowalczyk,barbarakowalczyk@email.com,1968-03-14,Brzozowa 9,51-234,Wroclaw
+Zbigniew,Kaczmarek,zbigniewkaczmarek@email.com,1962-12-05,Kosciuszki 8,52-345,Opole
