@@ -489,7 +489,7 @@
       <filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <name>${Internal.Job.Filename.Directory}/config.properties</name>
+      <name>${Internal.Transformation.Filename.Directory}/config.properties</name>
       <exclude_filemask/>
       <filemask/>
       <file_required>N</file_required>
