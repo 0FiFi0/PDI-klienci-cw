@@ -523,13 +523,38 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Group by miasto</from>
+      <from>Group by zakres lat</from>
+      <to>Table output lata</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>REST client</from>
+      <to>JSON input</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
       <to>Table output miasta </to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Group by zakres lat</from>
-      <to>Table output lata</to>
+      <from>Group by</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified JavaScript value</from>
+      <to>REST client</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>JSON input</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by miasto</from>
+      <to>Modified JavaScript value</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -604,28 +629,6 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Ullica</name>
-        <type>String</type>
-        <format/>
-        <currency>zł</currency>
-        <decimal>,</decimal>
-        <group> </group>
-        <length>14</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Kod pocztowy</name>
-        <type>String</type>
-        <format/>
-        <currency>zł</currency>
-        <decimal>,</decimal>
-        <group> </group>
-        <length>6</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>Miasto</name>
         <type>String</type>
         <format/>
@@ -646,8 +649,57 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>176</yloc>
+      <xloc>128</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname/>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>Miasto</name>
+      </field>
+      <field>
+        <name>Ilosc klientow</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>kod_pocztowy</aggregate>
+        <subject>kod_pocztowy</subject>
+        <type>MIN</type>
+        <valuefield/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -655,7 +707,7 @@
     <name>Group by miasto</name>
     <type>GroupBy</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -692,8 +744,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>176</yloc>
+      <xloc>432</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -738,8 +790,213 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>272</yloc>
+      <xloc>656</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>JSON input</name>
+    <type>JsonInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <ignoreMissingPath>Y</ignoreMissingPath>
+    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
+    <includeNulls>N</includeNulls>
+    <rownum_field/>
+    <file>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>kod_pocztowy</name>
+        <path>$.postalCodes[*].postalCode</path>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField>result</valueField>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var username = getEnvironmentVar("ZIP_USERNAME");
+var url = "http://api.geonames.org/postalCodeSearchJSON?placename=" + encodeURIComponent(Miasto) + "&amp;country=PL&amp;maxRows=500&amp;username=" + username;</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>url</name>
+        <rename>url</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>REST client</name>
+    <type>Rest</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <applicationType>JSON</applicationType>
+    <method>GET</method>
+    <url/>
+    <urlInField>Y</urlInField>
+    <dynamicMethod>N</dynamicMethod>
+    <methodFieldName/>
+    <urlField>url</urlField>
+    <bodyField/>
+    <httpLogin/>
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <preemptive>N</preemptive>
+    <trustStoreFile/>
+    <trustStorePassword>Encrypted </trustStorePassword>
+    <headers>
+      </headers>
+    <parameters>
+      </parameters>
+    <matrixParameters>
+      </matrixParameters>
+    <result>
+      <name>result</name>
+      <code/>
+      <response_time/>
+      <response_header/>
+    </result>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>miasto</name>
+      </field>
+      <field>
+        <name>kod_pocztowy</name>
+      </field>
+      <field>
+        <name>Ilosc klientow</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -780,8 +1037,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>176</yloc>
+      <xloc>304</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -822,8 +1079,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>272</yloc>
+      <xloc>528</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -866,8 +1123,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>272</yloc>
+      <xloc>848</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -910,8 +1167,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>176</yloc>
+      <xloc>1280</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -943,8 +1200,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>272</yloc>
+      <xloc>336</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -999,7 +1256,7 @@
     </remotesteps>
     <GUI>
       <xloc>432</xloc>
-      <yloc>272</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>hasla</name>
+    <name>baza</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,127 +427,79 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2025/02/20 13:13:31.316</created_date>
+    <created_date>2025/02/24 10:57:44.246</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2025/02/20 13:13:31.316</modified_date>
+    <modified_date>2025/02/24 10:57:44.246</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>DBconn</name>
+    <server>${DB_HOST}</server>
+    <type>MSSQL</type>
+    <access>Native</access>
+    <database>master</database>
+    <port>${DB_PORT}</port>
+    <username>${DB_USERNAME}</username>
+    <password>${DB_PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${DB_PORT}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>Property input</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows</from>
-      <to>Row flattener</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Row flattener</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Set variables</to>
+      <from>Execute SQL script</from>
+      <to>Execute SQL script 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Property input</name>
-    <type>PropertyInput</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <file_type>property</file_type>
-    <encoding>UTF-8</encoding>
-    <include>N</include>
-    <include_field/>
-    <filename_Field/>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field/>
-    <resetrownumber>N</resetrownumber>
-    <resolvevaluevariable>N</resolvevaluevariable>
-    <ini_section>N</ini_section>
-    <ini_section_field/>
-    <section/>
-    <file>
-      <name/>
-      <exclude_filemask/>
-      <filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>${Internal.Transformation.Filename.Directory}/config.properties</name>
-      <exclude_filemask/>
-      <filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>Key</name>
-        <column>key</column>
-        <type>String</type>
-        <format/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <currency/>
-        <decimal/>
-        <group/>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>Value</name>
-        <column>value</column>
-        <type>String</type>
-        <format/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <currency/>
-        <decimal/>
-        <group/>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row flattener</name>
-    <type>Flattener</type>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -557,27 +508,22 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_name>value</field_name>
-    <fields>
-      <field>
-        <name>DB_DATABASE</name>
-      </field>
-      <field>
-        <name>DB_HOST</name>
-      </field>
-      <field>
-        <name>DB_PASSWORD</name>
-      </field>
-      <field>
-        <name>DB_PORT</name>
-      </field>
-      <field>
-        <name>DB_USERNAME</name>
-      </field>
-      <field>
-        <name>ZIP_USERNAME</name>
-      </field>
-    </fields>
+    <connection>DBconn</connection>
+    <execute_each_row>N</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>N</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'Klienci') 
+BEGIN
+    CREATE DATABASE Klienci
+END;</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+    </arguments>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -587,66 +533,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>144</yloc>
+      <xloc>192</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>DB_DATABASE</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DB_HOST</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DB_PASSWORD</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DB_PORT</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DB_USERNAME</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ZIP_USERNAME</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set variables</name>
-    <type>SetVariable</type>
+    <name>Execute SQL script 2</name>
+    <type>ExecSQL</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -655,45 +549,39 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
-      <field>
-        <field_name>DB_DATABASE</field_name>
-        <variable_name>DB_DATABASE</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-      <field>
-        <field_name>DB_HOST</field_name>
-        <variable_name>DB_HOST</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-      <field>
-        <field_name>DB_PASSWORD</field_name>
-        <variable_name>DB_PASSWORD</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-      <field>
-        <field_name>DB_PORT</field_name>
-        <variable_name>DB_PORT</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-      <field>
-        <field_name>DB_USERNAME</field_name>
-        <variable_name>DB_USERNAME</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-      <field>
-        <field_name>ZIP_USERNAME</field_name>
-        <variable_name>ZIP_USERNAME</variable_name>
-        <variable_type>JVM</variable_type>
-        <default_value/>
-      </field>
-    </fields>
-    <use_formatting>Y</use_formatting>
+    <connection>DBconn</connection>
+    <execute_each_row>N</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>N</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>USE Klienci;
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Miasta') AND type = N'U')
+BEGIN
+    CREATE TABLE Miasta
+    (
+        Miasto VARCHAR(19),
+        kod_pocztowy VARCHAR(100),
+        [Ilosc klientow] BIGINT
+    )
+END;
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Lata') AND type = N'U')
+BEGIN
+    CREATE TABLE Lata
+    (
+        [Zakres lat] VARCHAR(255),
+        [Ilosc klientow] BIGINT
+    )
+END;
+</sql>
+    <set_params>N</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+    </arguments>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -703,50 +591,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Key</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>144</yloc>
+      <xloc>392</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
