@@ -861,7 +861,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>832</xloc>
       <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
@@ -915,7 +915,7 @@ var url = "http://api.geonames.org/postalCodeSearchJSON?placename=" + encodeURIC
     <name>REST client</name>
     <type>Rest</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -958,7 +958,7 @@ var url = "http://api.geonames.org/postalCodeSearchJSON?placename=" + encodeURIC
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>704</xloc>
       <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1037,7 +1037,7 @@ var url = "http://api.geonames.org/postalCodeSearchJSON?placename=" + encodeURIC
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
+      <xloc>336</xloc>
       <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
