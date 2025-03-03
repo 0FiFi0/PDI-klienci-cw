@@ -588,6 +588,7 @@ CREATE TABLE Klienci
 , Email VARCHAR(100)
 , "Data urodzenia" DATETIME
 , Miasto VARCHAR(100)
+, "Card number" VARCHAR(16)
 )
 END;</sql>
     <set_params>N</set_params>
