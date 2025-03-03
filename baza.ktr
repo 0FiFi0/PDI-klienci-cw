@@ -501,7 +501,7 @@
     <name>Create db</name>
     <type>ExecSQL</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -536,7 +536,7 @@ END;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
+      <xloc>336</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -577,6 +577,18 @@ BEGIN
         [Zakres lat] VARCHAR(255),
         [Ilosc klientow] BIGINT
     )
+END;
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Klienci') AND type = N'U')
+BEGIN
+CREATE TABLE Klienci
+(
+  Imie VARCHAR(100)
+, Nazwisko VARCHAR(100)
+, Email VARCHAR(100)
+, "Data urodzenia" DATETIME
+, Miasto VARCHAR(100)
+)
 END;</sql>
     <set_params>N</set_params>
     <insert_field/>
@@ -594,7 +606,7 @@ END;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>392</xloc>
+      <xloc>544</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
