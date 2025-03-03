@@ -606,27 +606,21 @@
     <fields>
       <field>
         <name>DB_DATABASE</name>
-        <rename/>
       </field>
       <field>
         <name>DB_HOST</name>
-        <rename/>
       </field>
       <field>
         <name>DB_PASSWORD</name>
-        <rename/>
       </field>
       <field>
         <name>DB_PORT</name>
-        <rename/>
       </field>
       <field>
         <name>DB_USERNAME</name>
-        <rename/>
       </field>
       <field>
         <name>ZIP_USERNAME</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

@@ -344,7 +344,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>304</xloc>
+      <xloc>384</xloc>
       <yloc>272</yloc>
       <attributes_kjc/>
     </entry>
@@ -383,7 +383,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>720</xloc>
+      <xloc>640</xloc>
       <yloc>272</yloc>
       <attributes_kjc/>
     </entry>
@@ -395,7 +395,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>832</xloc>
+      <xloc>752</xloc>
       <yloc>272</yloc>
       <attributes_kjc/>
     </entry>
@@ -434,46 +434,31 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>496</xloc>
+      <xloc>512</xloc>
       <yloc>272</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>File exists hasla</name>
+      <name>Checks if files exist</name>
       <description/>
-      <type>FILE_EXISTS</type>
+      <type>FILES_EXIST</type>
       <attributes/>
-      <filename>${Internal.Job.Filename.Directory}/hasla.ktr</filename>
+      <filename/>
+      <fields>
+        <field>
+          <name>${Internal.Job.Filename.Directory}/hasla.ktr</name>
+        </field>
+        <field>
+          <name>${Internal.Job.Filename.Directory}/baza.ktr</name>
+        </field>
+        <field>
+          <name>${Internal.Job.Filename.Directory}/klienci.ktr</name>
+        </field>
+      </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>272</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>File exists baza</name>
-      <description/>
-      <type>FILE_EXISTS</type>
-      <attributes/>
-      <filename>${Internal.Job.Filename.Directory}/baza.ktr</filename>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>272</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>File exists klienci</name>
-      <description/>
-      <type>FILE_EXISTS</type>
-      <attributes/>
-      <filename>${Internal.Job.Filename.Directory}/klienci.ktr</filename>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>608</xloc>
+      <xloc>240</xloc>
       <yloc>272</yloc>
       <attributes_kjc/>
     </entry>
@@ -490,7 +475,7 @@
     </hop>
     <hop>
       <from>Start</from>
-      <to>File exists hasla</to>
+      <to>Checks if files exist</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -498,7 +483,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>File exists hasla</from>
+      <from>Checks if files exist</from>
       <to>hasla</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -508,15 +493,6 @@
     </hop>
     <hop>
       <from>hasla</from>
-      <to>File exists baza</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>File exists baza</from>
       <to>baza</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -525,17 +501,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>File exists klienci</from>
-      <to>klienci</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>baza</from>
-      <to>File exists klienci</to>
+      <to>klienci</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
