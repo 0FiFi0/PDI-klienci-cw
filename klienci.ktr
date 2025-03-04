@@ -604,16 +604,41 @@
     </hop>
     <hop>
       <from>Unique rows</from>
-      <to>Join rows (cartesian product)</to>
+      <to>Group by 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Generate random credit card numbers</from>
-      <to>Join rows (cartesian product)</to>
+      <from>Group by 2</from>
+      <to>Set variables</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Join rows (cartesian product)</from>
+      <from>Unique rows</from>
+      <to>Add id_klienta</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Credit cards</from>
+      <to>Add id_karty</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add id_klienta</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add id_karty</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
       <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
@@ -783,6 +808,41 @@
     <GUI>
       <xloc>64</xloc>
       <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Credit cards</name>
+    <type>RandomCCNumberGenerator</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <cctype>Visa</cctype>
+        <cclen>16</cclen>
+        <ccsize>${ILOSCKLIENTOW}</ccsize>
+      </field>
+    </fields>
+    <cardNumberFieldName>Numer karty</cardNumberFieldName>
+    <cardLengthFieldName/>
+    <cardTypeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1716,50 +1776,6 @@ var Miasto = removeDiacritics(Miasto);
     </GUI>
   </step>
   <step>
-    <name>Table output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>SQLDocker</connection>
-    <schema/>
-    <table>Klienci</table>
-    <commit>1000</commit>
-    <truncate>Y</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Table output lata</name>
     <type>TableOutput</type>
     <description/>
@@ -1971,8 +1987,8 @@ var Miasto = removeDiacritics(Miasto);
     </GUI>
   </step>
   <step>
-    <name>Join rows (cartesian product)</name>
-    <type>JoinRows</type>
+    <name>Group by 2</name>
+    <type>GroupBy</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1981,18 +1997,93 @@ var Miasto = removeDiacritics(Miasto);
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
     <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main>Unique rows</main>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue/>
-        <function>=</function>
-        <rightvalue/>
-      </condition>
-    </compare>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname/>
+    <give_back_row>N</give_back_row>
+    <group>
+      </group>
+    <fields>
+      <field>
+        <aggregate>iloscKlienow</aggregate>
+        <subject>Email</subject>
+        <type>COUNT_ANY</type>
+        <valuefield/>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set variables</name>
+    <type>SetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <field_name>iloscKlienow</field_name>
+        <variable_name>ILOSCKLIENTOW</variable_name>
+        <variable_type>JVM</variable_type>
+        <default_value/>
+      </field>
+    </fields>
+    <use_formatting>Y</use_formatting>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add id_klienta</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>Id_klienta</valuename>
+    <use_database>N</use_database>
+    <connection>SQLDocker</connection>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2008,8 +2099,77 @@ var Miasto = removeDiacritics(Miasto);
     </GUI>
   </step>
   <step>
-    <name>Generate random credit card numbers</name>
-    <type>RandomCCNumberGenerator</type>
+    <name>Add id_karty</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>Id_karty</valuename>
+    <use_database>N</use_database>
+    <connection>SQLDocker</connection>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>Add id_klienta</step1>
+    <step2>Add id_karty</step2>
+    <keys_1>
+      <key>Id_klienta</key>
+    </keys_1>
+    <keys_2>
+      <key>Id_karty</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2020,14 +2180,23 @@ var Miasto = removeDiacritics(Miasto);
     </partitioning>
     <fields>
       <field>
-        <cctype>Visa</cctype>
-        <cclen>16</cclen>
-        <ccsize>150</ccsize>
+        <name>Imie</name>
+        <rename/>
       </field>
+      <field>
+        <name>Nazwisko</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Email</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Numer karty</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
-    <cardNumberFieldName>Card number</cardNumberFieldName>
-    <cardLengthFieldName/>
-    <cardTypeFieldName/>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2037,8 +2206,52 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>128</yloc>
+      <xloc>608</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>SQLDocker</connection>
+    <schema/>
+    <table>Klienci</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

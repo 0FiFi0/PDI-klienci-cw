@@ -586,9 +586,7 @@ CREATE TABLE Klienci
   Imie VARCHAR(100)
 , Nazwisko VARCHAR(100)
 , Email VARCHAR(100)
-, "Data urodzenia" DATETIME
-, Miasto VARCHAR(100)
-, "Card number" VARCHAR(16)
+, "Numer karty" VARCHAR(16)
 )
 END;</sql>
     <set_params>N</set_params>
