@@ -548,7 +548,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load text from file</from>
+      <from>Load PDF</from>
       <to>Split field to rows</to>
       <enabled>Y</enabled>
     </hop>
@@ -574,16 +574,16 @@
     </hop>
     <hop>
       <from>Split fields</from>
-      <to>Modified JavaScript value </to>
+      <to>Polskie znaki</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>String binary to normal</from>
-      <to>Modified JavaScript value </to>
+      <to>Polskie znaki</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Modified JavaScript value </from>
+      <from>Polskie znaki</from>
       <to>Sort by email</to>
       <enabled>Y</enabled>
     </hop>
@@ -604,12 +604,12 @@
     </hop>
     <hop>
       <from>Unique rows</from>
-      <to>Group by 2</to>
+      <to>Group ilosc klientow</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Group by 2</from>
-      <to>Set variables</to>
+      <from>Group ilosc klientow</from>
+      <to>Set ILOSCKLIENTOW</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -618,17 +618,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Credit cards</from>
-      <to>Add id_karty</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add id_klienta</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add id_karty</from>
       <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
@@ -638,8 +628,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Add id_karty</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Select values</from>
-      <to>Table output</to>
+      <to>Table output klienci</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Block this step until steps finish</from>
+      <to>Generate random credit card numbers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate random credit card numbers</from>
+      <to>Add id_karty</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set ILOSCKLIENTOW</from>
+      <to>Block this step until steps finish</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -734,7 +744,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
+      <xloc>144</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -806,43 +816,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Credit cards</name>
-    <type>RandomCCNumberGenerator</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <cctype>Visa</cctype>
-        <cclen>16</cclen>
-        <ccsize>${ILOSCKLIENTOW}</ccsize>
-      </field>
-    </fields>
-    <cardNumberFieldName>Numer karty</cardNumberFieldName>
-    <cardLengthFieldName/>
-    <cardTypeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>48</yloc>
+      <xloc>144</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -890,7 +865,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
+      <xloc>1168</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -936,7 +911,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>672</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -982,7 +957,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>800</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1053,13 +1028,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1056</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Load text from file</name>
+    <name>Load PDF</name>
     <type>LoadTextFromFile</type>
     <description/>
     <distribute>Y</distribute>
@@ -1177,13 +1152,13 @@ var url = "http://api.geonames.org/postalCodeSearchJSON?placename=" + encodeURIC
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>800</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Modified JavaScript value </name>
+    <name>Polskie znaki</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -1259,7 +1234,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
+      <xloc>256</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1311,7 +1286,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>944</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1320,7 +1295,7 @@ var Miasto = removeDiacritics(Miasto);
     <name>Select line</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1342,8 +1317,8 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>176</yloc>
+      <xloc>144</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1379,7 +1354,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
+      <xloc>1264</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1421,7 +1396,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>352</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1463,7 +1438,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>544</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1505,7 +1480,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>672</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1537,8 +1512,8 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>112</yloc>
+      <xloc>144</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1642,7 +1617,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
+      <xloc>144</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1770,7 +1745,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
+      <xloc>256</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1814,7 +1789,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>944</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1858,7 +1833,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>1392</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1893,7 +1868,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>432</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1926,7 +1901,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>432</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1981,13 +1956,13 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>544</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Group by 2</name>
+    <name>Group ilosc klientow</name>
     <type>GroupBy</type>
     <description/>
     <distribute>Y</distribute>
@@ -2024,13 +1999,13 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
+      <xloc>256</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set variables</name>
+    <name>Set ILOSCKLIENTOW</name>
     <type>SetVariable</type>
     <description/>
     <distribute>Y</distribute>
@@ -2058,43 +2033,8 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
+      <xloc>256</xloc>
       <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add id_klienta</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>Id_klienta</valuename>
-    <use_database>N</use_database>
-    <connection>SQLDocker</connection>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2128,8 +2068,43 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>544</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add id_klienta</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>Id_klienta</valuename>
+    <use_database>N</use_database>
+    <connection>SQLDocker</connection>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2162,7 +2137,7 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>544</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2206,13 +2181,13 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>672</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table output</name>
+    <name>Table output klienci</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2226,7 +2201,7 @@ var Miasto = removeDiacritics(Miasto);
     <schema/>
     <table>Klienci</table>
     <commit>1000</commit>
-    <truncate>N</truncate>
+    <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
     <specify_fields>N</specify_fields>
@@ -2250,8 +2225,74 @@ var Miasto = removeDiacritics(Miasto);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>800</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Block this step until steps finish</name>
+    <type>BlockUntilStepsFinish</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <steps>
+      <step>
+        <name>Set ILOSCKLIENTOW</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Generate random credit card numbers</name>
+    <type>RandomCCNumberGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <cctype>Visa</cctype>
+        <cclen>16</cclen>
+        <ccsize>${ILOSCKLIENTOW}</ccsize>
+      </field>
+    </fields>
+    <cardNumberFieldName>Numer karty</cardNumberFieldName>
+    <cardLengthFieldName/>
+    <cardTypeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2259,6 +2300,18 @@ var Miasto = removeDiacritics(Miasto);
     <error>
       <source_step>REST client</source_step>
       <target_step>Filter rows</target_step>
+      <is_enabled>N</is_enabled>
+      <nr_valuename/>
+      <descriptions_valuename/>
+      <fields_valuename/>
+      <codes_valuename/>
+      <max_errors/>
+      <max_pct_errors/>
+      <min_pct_rows/>
+    </error>
+    <error>
+      <source_step>Select line</source_step>
+      <target_step>Credit cards</target_step>
       <is_enabled>N</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>
