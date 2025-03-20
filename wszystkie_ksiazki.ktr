@@ -436,15 +436,70 @@
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>DBconn</name>
+    <server>${DB_HOST}</server>
+    <type>MSSQL</type>
+    <access>Native</access>
+    <database>${DB_DATABASE}</database>
+    <port>${DB_PORT}</port>
+    <username>${DB_USERNAME}</username>
+    <password>${DB_PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${DB_PORT}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>HTTP client</from>
+      <from>Zczytywanie linkow ksiazek</from>
       <to>Split field to rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Split field to rows</from>
-      <to>String operations</to>
+      <to>Trim both</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -464,7 +519,7 @@
     </hop>
     <hop>
       <from>Add sequence</from>
-      <to>Modified JavaScript value 2</to>
+      <to>Page_url</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -473,27 +528,27 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Modified JavaScript value 2</from>
-      <to>HTTP client</to>
+      <from>Page_url</from>
+      <to>Zczytywanie linkow ksiazek</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>String operations</from>
+      <from>Trim both</from>
       <to>Filter rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 2</from>
-      <to>Filter rows 2</to>
+      <to>No ../index.html</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows 2</from>
-      <to>Modified JavaScript value</to>
+      <from>No ../index.html</from>
+      <to>Books_url</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>HTTP client 2</from>
+      <from>Zczytywanie danych o ksiazkach</from>
       <to>Add kategoria</to>
       <enabled>Y</enabled>
     </hop>
@@ -528,8 +583,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Modified JavaScript value</from>
-      <to>HTTP client 2</to>
+      <from>Books_url</from>
+      <to>Zczytywanie danych o ksiazkach</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -776,7 +836,7 @@
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -894,12 +954,12 @@
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows 2</name>
+    <name>No ../index.html</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -909,7 +969,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Modified JavaScript value</send_true_to>
+    <send_true_to>Books_url</send_true_to>
     <send_false_to/>
     <compare>
       <condition>
@@ -970,12 +1030,12 @@
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>80</yloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HTTP client</name>
+    <name>Zczytywanie linkow ksiazek</name>
     <type>HTTP</type>
     <description/>
     <distribute>Y</distribute>
@@ -1014,12 +1074,12 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HTTP client 2</name>
+    <name>Zczytywanie danych o ksiazkach</name>
     <type>HTTP</type>
     <description/>
     <distribute>N</distribute>
@@ -1057,13 +1117,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>400</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Modified JavaScript value</name>
+    <name>Books_url</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>N</distribute>
@@ -1103,13 +1163,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>400</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Modified JavaScript value 2</name>
+    <name>Page_url</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -1149,8 +1209,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>192</yloc>
+      <xloc>208</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1203,7 +1263,7 @@
     </remotesteps>
     <GUI>
       <xloc>976</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1285,7 +1345,7 @@
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1390,13 +1450,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>192</yloc>
+      <xloc>496</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>String operations</name>
+    <name>Trim both</name>
     <type>StringOperations</type>
     <description/>
     <distribute>N</distribute>
@@ -1430,8 +1490,52 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>192</yloc>
+      <xloc>624</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>DBconn</connection>
+    <schema/>
+    <table>Ksiazki</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
