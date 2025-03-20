@@ -557,7 +557,7 @@ END;
     <single_statement>N</single_statement>
     <replace_variables>N</replace_variables>
     <quoteString>N</quoteString>
-    <sql>WAITFOR DELAY '00:00:05';
+    <sql>WAITFOR DELAY '00:00:03';
 USE Klienci;
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Miasta') AND type = N'U')
@@ -588,7 +588,21 @@ CREATE TABLE Klienci
 , Email VARCHAR(100)
 , "Numer karty" VARCHAR(16)
 )
-END;</sql>
+END;
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Ksiazki') AND type = N'U')
+BEGIN
+CREATE TABLE Ksiazki
+(
+  tytul VARCHAR(255)
+, kod VARCHAR(40)
+, kategoria VARCHAR(30)
+, cena VARCHAR(6)
+, dostepnosc VARCHAR(4)
+)
+
+END;
+</sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
