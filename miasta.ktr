@@ -519,7 +519,7 @@
     <hop>
       <from>Select miasto</from>
       <to>Table output miasta </to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Sort by miasto</from>
