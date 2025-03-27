@@ -767,15 +767,12 @@
     <fields>
       <field>
         <name>kod</name>
-        <rename/>
       </field>
       <field>
         <name>tytul</name>
-        <rename/>
       </field>
       <field>
         <name>cena</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
