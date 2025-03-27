@@ -583,9 +583,11 @@ IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'Klienci')
 BEGIN
 CREATE TABLE Klienci
 (
-  Imie VARCHAR(100)
+  id INT
+, Imie VARCHAR(100)
 , Nazwisko VARCHAR(100)
 , Email VARCHAR(100)
+, "Data urodzenia" DATETIME
 , "Numer karty" VARCHAR(16)
 )
 END;
