@@ -460,6 +460,12 @@
         <field>
           <name>${Internal.Job.Filename.Directory}/klienci.pdf</name>
         </field>
+        <field>
+          <name>${Internal.Job.Filename.Directory}/Liczba_stron.ktr</name>
+        </field>
+        <field>
+          <name>${Internal.Job.Filename.Directory}/wszystkie_ksiazki.ktr</name>
+        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -643,7 +649,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>640</xloc>
-      <yloc>384</yloc>
+      <yloc>448</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -681,8 +687,47 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>840</xloc>
-      <yloc>384</yloc>
+      <xloc>848</xloc>
+      <yloc>448</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Liczba stron</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/Liczba_stron.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>640</xloc>
+      <yloc>352</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -760,8 +805,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>klienci</from>
-      <to>Ksiazki</to>
+      <from>Ksiazki</from>
+      <to>zamowienia</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -769,8 +814,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Ksiazki</from>
-      <to>zamowienia</to>
+      <from>klienci</from>
+      <to>Liczba stron</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Liczba stron</from>
+      <to>Ksiazki</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
